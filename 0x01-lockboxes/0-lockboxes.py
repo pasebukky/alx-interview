@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+    Create a function that determines if all the boxes can be opened.
+
+    return: True or False
+"""
+
 
 def canUnlockAll(boxes):
     """
