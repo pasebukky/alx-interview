@@ -3,11 +3,22 @@ import sys
 
 
 def print_usage_and_exit():
+    """
+    Prints the usage message and exits the program with status 1.
+    """
     print("Usage: nqueens N")
     sys.exit(1)
 
 
 def is_valid_number(n):
+    """
+    Checks if the given input is a valid integer.
+    Args:
+    n (str): The input to check.
+
+    Returns:
+    bool: True if n is a valid integer, False otherwise.
+    """
     try:
         int(n)
         return True
@@ -16,6 +27,17 @@ def is_valid_number(n):
 
 
 def can_place_queen(positions, current_row, current_col):
+    """
+    Checks if a queen can be placed at the given row and column
+    without being attacked.
+    Args:
+    positions (list): Current positions of the queens.
+    current_row (int): The row to place the queen.
+    current_col (int): The column to place the queen.
+
+    Returns:
+    bool: True if the queen can be placed, False otherwise.
+    """
     for row in range(current_row):
         col = positions[row]
         if col == current_col or \
@@ -26,6 +48,15 @@ def can_place_queen(positions, current_row, current_col):
 
 
 def solve_nqueens(N):
+    """
+    Solves the N queens problem using backtracking.
+    Args:
+    N (int): The size of the chessboard (NxN).
+
+    Returns:
+    list: A list of all possible solutions, each solution is a
+    list of column positions for each row.
+    """
     def place_queens(row):
         if row == N:
             results.append(positions[:])
@@ -42,6 +73,14 @@ def solve_nqueens(N):
 
 
 def format_results(results):
+    """
+    Formats the results into the required output format.
+    Args:
+    results (list): A list of all possible solutions.
+    Returns:
+    list: A list of formatted solutions, each solution
+    is a list of [row, col] pairs.
+    """
     formatted_results = []
     for solution in results:
         formatted_solution = []
