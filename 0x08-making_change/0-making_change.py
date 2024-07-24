@@ -3,14 +3,17 @@
 
 
 def makeChange(coins, total):
-    dp = [total + 1] * (total + 1)
-    dp[0] = 0
-
-    for a in range(1, total + 1):
-        for coin in coins:
-            if a - coin >= 0:
-                dp[a] = min(dp[a], 1 + dp[a - coin])
-
-    if dp[total] != (total + 1):
-        return dp[total]
-    return -1
+    if total < 1:
+        return 0
+    coins.sort()
+    coins.reverse()
+    fewest = 0
+    for coin in coins:
+        if total <= 0:
+            break
+        buff = total // coin
+        fewest += buff
+        total -= (buff * coin)
+    if total != 0:
+        return -1
+    return fewest
